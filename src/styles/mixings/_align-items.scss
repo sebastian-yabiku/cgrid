@@ -1,0 +1,51 @@
+/**
+ * @description: define class in responsive
+ * @mixing: call-align-items
+ */
+ @mixin call-align-items($type: false) {
+	@if($type == false) {
+	 @each $val in start, center, end, stretch, baseline {
+		 @include class-align-items(#{$align-items-class}_#{$val}, $val);
+	 }
+	} @else {
+	 @each $val in start, center, end, stretch, baseline {
+		 @include class-align-items(#{$align-items-class}_#{$val}-#{$type}, $val);
+	 }
+	}
+}
+
+/**
+ * @description: add default attr
+ * @mixing: attr-align-items
+ */
+@mixin attr-align-items {
+  @include call-align-items();
+}
+
+/**
+ * @description: Definition of class
+ * @mixing: class-align-items
+ */
+@mixin class-align-items($class, $type) {
+ .#{$class} {
+	 @include make-align-items($type)
+ }
+}
+
+/**
+ * @description: Define type.
+ * @mixing: make-align-items
+ */
+@mixin make-align-items($type) {
+  @if ($type == 'start') {
+    align-items: flex-#{$type};
+  } @else if ($type == 'end') {
+    align-items: flex-#{$type};
+  } @else if ($type == 'between') {
+    align-items: space-#{$type};
+  } @else if ($type == 'around') {
+    align-items: space-#{$type};
+  } @else {
+    align-items: $type;
+  }
+}

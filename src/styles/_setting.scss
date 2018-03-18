@@ -1,0 +1,124 @@
+/**
+ * @description: Configuration Object
+ */
+$settings: (
+	global: (
+		unit : 'px',
+		layout : 1000
+	),
+	row: (
+		class: 'cgrid-row'
+	),
+	column: (
+		total: 12,
+		class: 'col',
+		prefix: 'col-'
+	),
+	justify_content:(
+    class: 'cgrid-j-c'
+	),
+	align_content:(
+		class: 'cgrid-a-c'
+	),
+	align_items:(
+		class: 'cgrid-a-i'
+	),
+	align_self:(
+		class: 'cgrid-a-s'
+	),
+	direction:(
+		class: 'cgrid-d'
+	),
+	wrap:(
+		class: 'cgrid-w'
+	),
+	spacing: (
+  	width: 10
+	),
+  viewports:(
+  	mobil: 425,    //xs
+  	tablet: 799,   //sm
+  	desktop: 1199, //md
+    wide: 1200     //lg
+  )
+);
+
+/**
+ * @description: get Data Object
+ */
+@function map-sub-map($map, $keys, $subkey){
+  $submap: map-get(map-get($map, $keys), $subkey);
+  @return $submap;
+}
+
+/**
+ * @description: Definition of variables
+ */
+
+/* Global units
+---------------------------------------------------------------*/
+$global-unit: map-sub-map($settings, 'global', 'unit');
+$global-layout: map-sub-map($settings, 'global', 'layout');
+
+/* Spaced
+---------------------------------------------------------------*/
+$spacing:  map-sub-map($settings, 'spacing', 'width');
+
+/* attr Row
+---------------------------------------------------------------*/
+$row-class: map-sub-map($settings, 'row', 'class');
+$row-prefix: map-sub-map($settings, 'row', 'prefix');
+
+/* attr Column
+---------------------------------------------------------------*/
+$column-total: map-sub-map($settings, 'column', 'total');
+$column-class: map-sub-map($settings, 'column', 'class');
+$column-prefix: map-sub-map($settings, 'column', 'prefix');
+
+/* attr justify content
+---------------------------------------------------------------*/
+$justify-content-class: map-sub-map($settings, 'justify_content', 'class');
+
+/* attr align content
+---------------------------------------------------------------*/
+$align-content-class: map-sub-map($settings, 'align_content', 'class');
+
+/* attr align items
+---------------------------------------------------------------*/
+$align-items-class: map-sub-map($settings, 'align_items', 'class');
+
+/* attr align self
+---------------------------------------------------------------*/
+$align-self-class: map-sub-map($settings, 'align_self', 'class');
+
+/* attr direction
+---------------------------------------------------------------*/
+$direction-class: map-sub-map($settings, 'direction', 'class');
+
+/* attr wrap
+---------------------------------------------------------------*/
+$wrap-class: map-sub-map($settings, 'wrap', 'class');
+
+/* Viewports
+---------------------------------------------------------------*/
+$viewport-mobile: map-sub-map($settings, 'viewports', 'mobil');
+$viewport-tablet: map-sub-map($settings, 'viewports', 'tablet');
+$viewport-desktop: map-sub-map($settings, 'viewports', 'desktop');
+$viewport-wide: map-sub-map($settings, 'viewports', 'wide');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

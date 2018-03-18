@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CGRID - Custom Grid</title>
+  <meta name="description" content="Grilla customizable basada en flexbox"></meta>
+	<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+  <link rel="stylesheet" href="dist/styles/brandui.css">
+  <meta property="og:url" content="https://www.your-domain.com/your-page.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="CGRID - Custom Grid" />
+  <meta property="og:description" content="Grilla customizable basada en flexbox" />
+  <meta property="og:image" content="https://www.your-domain.com/path/image.jpg" />
+</head>
+
+<body>
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.12&appId=1009709955762555&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+	<div class="tem_Wrap">
+    <nav class="mol-nav_Main">
+      <ul class="Main__list container list-inline t-a_right v-a_top">
+        <li>
+            <a href="https://twitter.com/intent/tweet?screen_name=TwitterDev&ref_src=twsrc%5Etfw"
+            class="twitter-mention-button"
+            data-text="Custom Grid grillas customizadas basado en flexbox!!"
+            data-related=""
+            data-lang="es" data-show-count="false">Tweet to @TwitterDev</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </li>
+        <li>
+          <div class="fb-share-button" data-href="https://www.vexsoluciones.com/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.vexsoluciones.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
+        </li>
+      </ul>
+    </nav>
+		<div class="container">
+			<header class="tem_Header">
+				<h1 class="Header__logo">
+					<a class="atm_Branding-logo" href="">
+						<span class="Branding-logo__letter">
+							<span class="Branding-logo__flex">
+								<span class="Branding-logo__cold"></span>
+								<span class="Branding-logo__cold"></span>
+								<span class="Branding-logo__cold"></span>
+							</span>
+							<span class="Branding-logo__c">C</span>
+						</span><span class="Branding-logo__paragraph">USTOMGRID</span>
+					</a>
+					<span class="Header__subtitle">Basado en flexbox</span>
+				</h1>
+			</header>
+			<div class="tem_Body">
+				<div class="org-section_Presentation">
+					<div class="Presentation__description">
+						<p>CustomGrid fue creada para agilizar la creacion de grillas. Este esta basada en un lenguaje semantico, que la hacen facil de interpretar.
+								Cuenta con mixings para poder crear grillas de manera personalizada y que estas se adapten a tu diseño.
+                <br/>
+                <br/>
+								Algunas de las caracteristicas mas importantes son:
+						</p>
+						<ul class="Presentation__list">
+							<li>
+                <span class="Presentation__bubble">
+                  <i class="i i-flexbox"></i>
+                </span>
+                Soporte flexbox
+              </li>
+							<li>
+                  <span class="Presentation__bubble">
+                      <i class="i i-custom"></i>
+                  </span>
+                Customizacion de grillas
+              </li>
+							<li>
+                <span class="Presentation__bubble">
+                    <i class="i i-responsive"></i>
+                </span>
+                Responsive
+              </li>
+							<li>
+                  <span class="Presentation__bubble">
+                      <i class="i i-sass"></i>
+                  </span>
+                Desarrollo en sass
+              </li>
+						</ul>
+					</div>
+        </div>
+        <ul class="js_tab__menu org_Tab">
+          <li class="is-active">Implementacion</li>
+          <li>Mixings</li>
+        </ul>
+				<div class="js_tab__content org-section_Examples">
+            <div class="Examples__row">
+              <span class="js_row-toggle Examples__row-toggle-btn is-active">
+                </span>
+              <div class="Examples__description">
+                <h2>Objeto de configuración</h2>
+                <p>CGRID tiene un objeto de configuración definido, desde donde podras customizar.. desde el numero de grillas,
+                  el nombre de las clases, el ancho del layout, el espacio entre filas y los breakpoints.
+                </p>
+              </div>
+              <div class="js_row Examples__content is-active">
+                <div class="Examples__item">
+<pre>
+  <code>
+  <span class="tag">$settings: (</span>
+    <span class="tag"><span class="class">global: (</span>
+      <span class="tag"><span class="class">unit: <span class="class-value">'px'</span></span>
+      <span class="tag"><span class="class">layout: <span class="class-value">1000</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">row: (</span>
+      <span class="tag"><span class="class">class: <span class="class-value">'cgrid-row'</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">column: (</span>
+      <span class="tag"><span class="class">total: <span class="class-value">12</span></span>
+      <span class="tag"><span class="class">class: <span class="class-value">'col'</span></span>
+      <span class="tag"><span class="class">prefix: <span class="class-value">'col-'</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">justify_content: (</span>
+      <span class="tag"><span class="class">class: <span class="class-value">'cgrid-j-c'</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">align_content: (</span>
+      <span class="tag"><span class="class">class: <span class="class-value">'cgrid-a-c'</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">align_items: (</span>
+      <span class="tag"><span class="class">class: <span class="class-value">'cgrid-a-i'</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">align_self: (</span>
+      <span class="tag"><span class="class">class: <span class="class-value">'cgrid-a-s'</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">direction: (</span>
+      <span class="tag"><span class="class">class: <span class="class-value">'cgrid-d'</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">wrap: (</span>
+      <span class="tag"><span class="class">class: <span class="class-value">'cgrid-w'</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">spacing: (</span>
+      <span class="tag"><span class="class">width: <span class="class-value">10</span></span>
+    <span class="tag"><span class="class">)</span>
+    <span class="tag"><span class="class">viewports: (</span>
+      <span class="tag"><span class="class">mobil: <span class="class-value">426</span></span>
+      <span class="tag"><span class="class">tablet: <span class="class-value">800</span></span>
+      <span class="tag"><span class="class">desktop: <span class="class-value">1200</span></span>
+      <span class="tag"><span class="class">wide: <span class="class-value">1200</span></span>
+    <span class="tag"><span class="class">)</span>
+  <span class="tag">)</span>
+  </code>
+</pre>
+                </div>
+              </div>
+            </div>
+					<div class="Examples__row">
+						<span class="js_row-toggle Examples__row-toggle-btn is-active">
+							</span>
+						<div class="Examples__description">
+							<h2>Breakpoints</h2>
+							<p>La definicion de los breakpoints estan basados en 4 medidas.</p>
+						</div>
+						<div class="js_row Examples__content is-active">
+							<div class="Examples__item">
+								<table class="org_Table">
+									<thead>
+										<th>
+											&nbsp;
+										</th>
+										<th>Mobile</th>
+										<th>Tablet</th>
+										<th>Desktop</th>
+										<th>Desktop Large</th>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Medidas</td>
+											<td><span class="minor">≤</span>&nbsp;425px</td>
+                      <!-- <td><span class="major">≥</span>&nbsp;426px&nbsp;<span class="and">&&</span> 799px&nbsp;<span class="minor">≤</span></td> -->
+                      <td><span class="minor">≤&nbsp;</span>799px</td>
+                      <td><span class="minor">≤&nbsp;</span>1199px</td>
+											<!-- <td><span class="major">≥</span>&nbsp;800px&nbsp;<span class="and">&&</span> 1199px&nbsp;<span class="minor">≤</span></td> -->
+											<td><span class="major">≥</span>&nbsp;1200px</td>
+										</tr>
+										<tr>
+											<td>Clases + Sufijo</td>
+											<td>[nombre-clase]-xs</td>
+											<td>[nombre-clase]-sm</td>
+											<td>[nombre-clase]-md</td>
+											<td>[nombre-clase]-lg</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="Examples__row">
+						<span class="js_row-toggle Examples__row-toggle-btn is-active">
+						</span>
+						<div class="Examples__description">
+              <h2>Basic Sintax</h2>
+              <p>La sintaxis basica, cubre desde la forma mas simple de definir grillas, definirlas de manera responsive y definir clases offset.</p>
+						</div>
+						<div class="js_row Examples__content is-active">
+						<div class="Examples__item">
+							<span class="js_item-toggle Examples__item-toggle-btn is-active">
+								</span>
+							<div class="Examples__item-description">
+								<h3>Auto Width</h3>
+							</div>
+							<div class="js_item Examples__item-content is-active">
+                <div class="Examples__item-hover">
+                  <div class="cgrid-row">
+                    <div class="col">
+                      <span class="box-content">
+                      </span>
+                    </div>
+                    <div class="col">
+                      <span class="box-content">
+                      </span>
+                    </div>
+                    <div class="col">
+                      <span class="box-content">
+                      </span>
+                    </div>
+                    <div class="col">
+                      <span class="box-content">
+                      </span>
+                    </div>
+                    <div class="col">
+                      <span class="box-content">
+                      </span>
+                    </div>
+                  </div>
+                    <div class="spacing"></div>
+                  <div class="cgrid-row">
+                    <div class="col">
+                      <span class="box-content">
+                      </span>
+                    </div>
+                    <div class="col">
+                      <span class="box-content">
+                      </span>
+                    </div>
+                  </div>
+                </div>
+						<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+						</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Responsive</h3>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row">
+        <div class="col-3-lg col-3-md col-6-sm col-12-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-3-lg col-3-md col-6-sm col-12-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-3-lg col-3-md col-6-sm col-12-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-3-lg col-3-md col-6-sm col-12-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+      <div class="spacing"></div>
+      <div class="cgrid-row">
+        <div class="col-6-lg col-6-md col-6-sm col-12-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-12-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-3-lg col-3-md col-6-sm col-12-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-3-lg col-3-md col-6-sm col-12-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-3-lg col-3-md col-6-sm col-12-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-3-lg col-3-md col-6-sm col-12-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-3-lg col-3-md col-6-sm col-12-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-12-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-12-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Offset</h3>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row">
+        <div class="col-11-offset-lg col-11-offset-md col-11-offset-sm col-11-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-10-offset-lg col-10-offset-md col-10-offset-sm col-10-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-9-offset-lg col-9-offset-md col-9-offset-sm col-9-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-8-offset-lg col-8-offset-md col-8-offset-sm col-8-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-7-offset-lg col-7-offset-md col-7-offset-sm col-7-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-6-offset-lg col-6-offset-md col-6-offset-sm col-6-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-5-offset-lg col-5-offset-md col-5-offset-sm col-5-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-4-offset-lg col-4-offset-md col-4-offset-sm col-4-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-3-offset-lg col-3-offset-md col-3-offset-sm col-3-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-2-offset-lg col-2-offset-md col-2-offset-sm col-2-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col-1-offset-lg col-1-offset-md col-1-offset-sm col-1-offset-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="line-break spacing"></div>
+        <div class="col">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-11-offset-lg col-11-offset-md col-11-offset-sm col-11-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-10-offset-lg col-10-offset-md col-10-offset-sm col-10-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-9-offset-lg col-9-offset-md col-9-offset-sm col-9-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-8-offset-lg col-8-offset-md col-8-offset-sm col-8-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-7-offset-lg col-7-offset-md col-7-offset-sm col-7-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-offset-lg col-6-offset-md col-6-offset-sm col-6-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-5-offset-lg col-5-offset-md col-5-offset-sm col-5-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-4-offset-lg col-4-offset-md col-4-offset-sm col-4-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-3-offset-lg col-3-offset-md col-3-offset-sm col-3-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-2-offset-lg col-2-offset-md col-2-offset-sm col-2-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-1-offset-lg col-1-offset-md col-1-offset-sm col-1-offset-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="Examples__row">
+		<span class="js_row-toggle Examples__row-toggle-btn is-active">
+			</span>
+	<div class="Examples__description">
+		<h2>Justify Content</h2>
+		<p> Se utiliza para alinear los ítems del eje principal <small>(por defecto, el horizontal)</small>.</p>
+	</div>
+	<div class="js_row Examples__content is-active">
+	<div class="Examples__item">
+			<span class="js_item-toggle Examples__item-toggle-btn is-active">
+				</span>
+		<div class="Examples__item-description">
+			<h3>Start</h3>
+			<p>Agrupa los items al principio del eje principal.</p>
+		</div>
+		<div class="js_item Examples__item-content is-active">
+      <div class="Examples__item-hover">
+        <div class="cgrid-row cgrid-j-c_start cgrid-j-c_end-sm">
+          <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <span class="line-break"></span>
+          <div class="spacing"></div>
+          <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+            <span class="box-content">
+            </span>
+          </div>
+        </div>
+      </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-j-c_start cgrid-j-c_end-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+		<div class="Examples__item-description">
+			<h3>Center</h3>
+			<p>Agrupa los items al centro del eje principal.</p>
+		</div>
+		<div class="js_item Examples__item-content is-active">
+      <div class="Examples__item-hover">
+        <div class="cgrid-row cgrid-j-c_center cgrid-j-c_start-sm">
+          <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <span class="line-break"></span>
+          <div class="spacing"></div>
+          <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+            <span class="box-content">
+            </span>
+          </div>
+        </div>
+      </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-j-c_center cgrid-j-c_start-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+		<div class="Examples__item-description">
+			<h3>End</h3>
+			<p>Agrupa los items al final del eje principal.</p>
+		</div>
+		<div class="js_item Examples__item-content is-active">
+      <div class="Examples__item-hover">
+        <div class="cgrid-row cgrid-j-c_end cgrid-j-c_start-sm">
+          <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <span class="line-break"></span>
+          <div class="spacing"></div>
+          <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+            <span class="box-content">
+            </span>
+          </div>
+        </div>
+      </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-j-c_end cgrid-j-c_start-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+		<div class="Examples__item-description">
+			<h3>Between</h3>
+			<p>Distribuye los items desde el inicio hasta el final</p>
+		</div>
+		<div class="js_item Examples__item-content is-active">
+      <div class="Examples__item-hover">
+        <div class="cgrid-row cgrid-j-c_between cgrid-j-c_center-sm">
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <span class="line-break"></span>
+          <div class="spacing"></div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+        </div>
+      </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-j-c_between cgrid-j-c_center-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+		<div class="Examples__item-description">
+			<h3>Around</h3>
+			<p>Distribuye los items dejando el mismo espacio a los lados de cada uno.</p>
+		</div>
+		<div class="js_item Examples__item-content is-active">
+      <div class="Examples__item-hover">
+        <div class="cgrid-row cgrid-j-c_around cgrid-j-c_between-sm">
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <span class="line-break"></span>
+          <div class="spacing"></div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+          <div class="col-3-lg col-3-md col-3-sm col-3-xs">
+            <span class="box-content">
+            </span>
+          </div>
+        </div>
+      </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-j-c_around cgrid-j-c_between-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="Examples__row">
+		<span class="js_row-toggle Examples__row-toggle-btn is-active">
+			</span>
+<div class="Examples__description">
+	<h2>Align Content</h2>
+	<p>Nos servirá cuando estemos tratando con un contenedor flex multilinea, que es un contenedor en el que los ítems no caben en el ancho disponible, y por lo tanto, el eje principal se divide en múltiples líneas
+		<small> (no tiene efecto sobre contenedores de una sola línea)</small>.
+	</p>
+</div>
+<div class="js_row Examples__content is-active">
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Start</h3>
+		<p>Agrupa los ítems al principio del eje principal.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-c_start cgrid-a-c_end-sm box-height">
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <span class="line-break"></span>
+        <div class="spacing"></div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-c_start cgrid-a-c_end-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;span</span> <span class="class">class</span>=<span class="class-value">"line-break"</span><span class="tag">></span>...<span class="tag">&lt;/span></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Center</h3>
+		<p>Agrupa los ítems al centro del eje principal.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-c_center cgrid-a-c_end-sm box-height">
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <span class="line-break"></span>
+        <div class="spacing"></div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-c_center cgrid-a-c_end-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;span</span> <span class="class">class</span>=<span class="class-value">"line-break"</span><span class="tag">></span>...<span class="tag">&lt;/span></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>End</h3>
+		<p>Agrupa los ítems al final del eje principal.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-c_end cgrid-a-c_start-sm box-height">
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <span class="line-break"></span>
+        <div class="spacing"></div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-c_end cgrid-a-c_start-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;span</span> <span class="class">class</span>=<span class="class-value">"line-break"</span><span class="tag">></span>...<span class="tag">&lt;/span></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Between</h3>
+		<p>Distribuye los ítems desde el inicio hasta el final.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-c_between cgrid-a-c_around-sm box-height">
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <span class="line-break"></span>
+        <div class="spacing"></div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-c_between cgrid-a-c_around-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;span</span> <span class="class">class</span>=<span class="class-value">"line-break"</span><span class="tag">></span>...<span class="tag">&lt;/span></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Around</h3>
+		<p>Distribuye los ítems dejando el mismo espacio a los lados de cada uno.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-c_around cgrid-a-c_between-sm box-height">
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-c_around cgrid-a-c_between-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;span</span> <span class="class">class</span>=<span class="class-value">"line-break"</span><span class="tag">></span>...<span class="tag">&lt;/span></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="Examples__row">
+		<span class="js_row-toggle Examples__row-toggle-btn is-active">
+			</span>
+<div class="Examples__description">
+	<h2>Align Items</h2>
+	<p>Se encarga de alinear<small>(vertical)</small> los ítems en el eje secundario del contenedor. Solo se encarga de alinear la linea actual.</p>
+</div>
+<div class="js_row Examples__content is-active">
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Start</h3>
+		<p>Alinea los ítems al principio del eje secundario.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-i_start cgrid-a-i_end-sm box-height">
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-i_start cgrid-a-i_end-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Center</h3>
+		<p>Alinea los ítems al centro del eje secundario.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-i_center cgrid-a-i_end-sm-sm box-height">
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-i_center cgrid-a-i_end"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>End</h3>
+		<p>Alinea los ítems al final del eje secundario.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-i_end cgrid-a-i_start-sm box-height">
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-i_end cgrid-a-i_start-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Strech</h3>
+		<p>Alinea los ítems estirándolos de modo que cubran desde el inicio hasta el final del contenedor.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-i_strech cgrid-a-i_start-sm box-height">
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-i_strech cgrid-a-i_start-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Baseline</h3>
+		<p>Alinea los ítems en el contenedor según la base del contenido de los ítems del contenedor.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-a-i_baseline cgrid-a-i_start-sm">
+        <div class="col-4-lg col-4-md col-4-sm col-4-xs">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="col-4-lg col-4-md col-4-sm col-4-xs">
+          <span class="box-content box-height">
+          </span>
+        </div>
+        <div class="col-4-lg col-4-md col-4-sm col-4-xs">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-a-i_baseline cgrid-a-i_start-sm"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="Examples__row">
+		<span class="js_row-toggle Examples__row-toggle-btn is-active">
+			</span>
+<div class="Examples__description">
+	<h2>Align Self</h2>
+	<p>align-self nos permite cambiar el comportamiento de align-items y sobreescribirlo con comportamientos específicos para ítems concretos que no queremos que se comporten igual que el resto. </p>
+</div>
+<div class="js_row Examples__content is-active">
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Start</h3>
+		<p>Alinea los ítems al principio del contenedor.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row box-height">
+        <div class="cgrid-a-s_start cgrid-a-s_end-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="cgrid-a-s_start cgrid-a-s_end-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_start cgrid-a-s_end-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_start cgrid-a-s_end-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Center</h3>
+		<p>Alinea los ítems al centro del eje secundario.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row box-height">
+        <div class="cgrid-a-s_center cgrid-a-s_start-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="cgrid-a-s_center col">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_center cgrid-a-s_start-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_center cgrid-a-s_start-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>End</h3>
+		<p>Alinea los ítems al final del eje secundario.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row box-height">
+        <div class="cgrid-a-s_end cgrid-a-s_start-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="cgrid-a-s_end cgrid-a-s_start-xs col">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_end cgrid-a-s_start-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_end cgrid-a-s_start-xs col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Strech</h3>
+		<p>Alinea los ítems estirándolos de modo que cubran desde el inicio hasta el final del contenedor.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row box-height">
+        <div class="cgrid-a-s_strech col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="cgrid-a-s_strech col">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_strech col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_strech col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Baseline</h3>
+		<p>Alinea los ítems en el contenedor según la base del contenido de los ítems del contenedor.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row">
+        <div class="cgrid-a-s_baseline col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="cgrid-a-s_baseline col">
+          <span class="box-content box-height">
+          </span>
+        </div>
+        <div class="cgrid-a-s_baseline col">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_baseline col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_baseline col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+  <span class="js_item-toggle Examples__item-toggle-btn is-active">
+    </span>
+  <div class="Examples__item-description">
+    <h3>Auto</h3>
+    <p>Hereda el valor de align-items del padre <small>(o si no lo tiene, stretch)</small>.</p>
+  </div>
+  <div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row">
+        <div class="cgrid-a-s_auto col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="cgrid-a-s_auto col">
+          <span class="box-content box-height">
+          </span>
+        </div>
+        <div class="cgrid-a-s_auto col">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_auto"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_auto"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+	</div>
+</div>
+</div>
+<div class="Examples__row">
+  <span class="js_row-toggle Examples__row-toggle-btn is-active">
+    </span>
+  <div class="Examples__description">
+    <h2>Direction</h2>
+    <p>Clases para ordenar filas, columnas e items.</p>
+  </div>
+<div class="js_row Examples__content is-active">
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Row</h3>
+		<p>Establece la dirección del eje principal en horizontal(Es el valor por defecto).</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-d_row">
+        <div class="col">
+          <span class="box-content">
+            1
+          </span>
+        </div>
+        <div class="col">
+          <span class="box-content">
+            2
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-d_row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Row Reverse</h3>
+		<p>Establece la dirección del eje principal en horizontal (invertido).</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-d_row-reverse">
+        <div class="cgrid-a-s_center col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+            1
+          </span>
+        </div>
+        <div class="cgrid-a-s_center col-6-lg col-6-md col-6-sm col-6-xs">
+          <span class="box-content">
+            2
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-d_row-reverse"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Column</h3>
+		<p>Establece la dirección del eje principal en vertical.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row cgrid-d_column cgrid-a-i_center">
+        <div class="col">
+          <span class="box-content">
+            1
+          </span>
+        </div>
+        <span class="spacing"></span>
+        <div class="col">
+          <span class="box-content">
+            2
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-d_column cgrid-a-i_center"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+<span class="js_item-toggle Examples__item-toggle-btn is-active">
+  </span>
+<div class="Examples__item-description">
+<h3>Column Reverse</h3>
+<p>Establece la dirección del eje principal en vertical (invertido).</p>
+</div>
+<div class="js_item Examples__item-content is-active">
+<div class="Examples__item-hover">
+  <div class="cgrid-row cgrid-d_column-reverse cgrid-a-i_center">
+    <div class="col">
+      <span class="box-content">
+        1
+      </span>
+    </div>
+    <span class="spacing"></span>
+    <div class="col">
+      <span class="box-content">
+        2
+      </span>
+    </div>
+  </div>
+</div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-d_column-reverse cgrid-a-i_center"</span><span class="tag">></span>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Strech</h3>
+		<p>Alinea los ítems estirándolos de modo que cubran desde el inicio hasta el final del contenedor.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row box-height">
+        <div class="cgrid-a-s_strech col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="cgrid-a-s_strech col">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_strech col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_strech col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+		<span class="js_item-toggle Examples__item-toggle-btn is-active">
+			</span>
+	<div class="Examples__item-description">
+		<h3>Baseline</h3>
+		<p>Alinea los ítems en el contenedor según la base del contenido de los ítems del contenedor.</p>
+	</div>
+	<div class="js_item Examples__item-content is-active">
+    <div class="Examples__item-hover">
+      <div class="cgrid-row">
+        <div class="cgrid-a-s_baseline col">
+          <span class="box-content">
+          </span>
+        </div>
+        <div class="cgrid-a-s_baseline col">
+          <span class="box-content box-height">
+          </span>
+        </div>
+        <div class="cgrid-a-s_baseline col">
+          <span class="box-content">
+          </span>
+        </div>
+      </div>
+    </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_baseline col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_baseline col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+<span class="js_item-toggle Examples__item-toggle-btn is-active">
+  </span>
+<div class="Examples__item-description">
+  <h3>Auto</h3>
+  <p>Hereda el valor de align-items del padre <small>(o si no lo tiene, stretch)</small>.</p>
+</div>
+<div class="js_item Examples__item-content is-active">
+  <div class="Examples__item-hover">
+    <div class="cgrid-row">
+      <div class="cgrid-a-s_auto col">
+        <span class="box-content">
+        </span>
+      </div>
+      <div class="cgrid-a-s_auto col">
+        <span class="box-content box-height">
+        </span>
+      </div>
+      <div class="cgrid-a-s_auto col">
+        <span class="box-content">
+        </span>
+      </div>
+    </div>
+  </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_auto col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-a-s_auto col"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+	</div>
+</div>
+</div>
+</div>
+<div class="Examples__row">
+<span class="js_row-toggle Examples__row-toggle-btn is-active">
+  </span>
+<div class="Examples__description">
+  <h2>Wrap</h2>
+  <p>Con la propiedad flex-wrap podemos especificar el comportamiento del contenedor.</p>
+</div>
+<div class="js_row Examples__content is-active">
+<div class="Examples__item">
+  <span class="js_item-toggle Examples__item-toggle-btn is-active">
+    </span>
+<div class="Examples__item-description">
+  <h3>nowrap</h3>
+  <p>Establece los ítems en una sola línea (no permite que se desborde el contenedor).</p>
+</div>
+<div class="js_item Examples__item-content is-active">
+  <div class="Examples__item-hover">
+    <div class="cgrid-row cgrid-w_nowrap">
+      <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+        <span class="box-content">
+          1
+        </span>
+      </div>
+      <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+        <span class="box-content">
+          2
+        </span>
+      </div>
+      <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+        <span class="box-content">
+          3
+        </span>
+      </div>
+      <div class="col-6-lg col-6-md col-6-sm col-6-xs">
+        <span class="box-content">
+          4
+        </span>
+      </div>
+    </div>
+  </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-w_nowrap"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md col-6-sm col-6-xs"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+  <span class="js_item-toggle Examples__item-toggle-btn is-active">
+    </span>
+<div class="Examples__item-description">
+  <h3>wrap</h3>
+  <p>Establece los ítems en modo multilínea (permite que se desborde el contenedor).</p>
+</div>
+<div class="js_item Examples__item-content is-active">
+  <div class="Examples__item-hover">
+    <div class="cgrid-row cgrid-w_wrap">
+      <div class="col-6-lg col-6-md">
+        <span class="box-content">
+          1
+        </span>
+      </div>
+      <div class="col-6-lg col-6-md">
+        <span class="box-content">
+          2
+        </span>
+      </div>
+      <div class="line-break spacing"></div>
+      <div class="col-6-lg col-6-md">
+        <span class="box-content">
+          3
+        </span>
+      </div>
+      <div class="col-6-lg col-6-md">
+        <span class="box-content">
+          4
+        </span>
+      </div>
+    </div>
+  </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-w_wrap"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+<div class="Examples__item">
+  <span class="js_item-toggle Examples__item-toggle-btn is-active">
+    </span>
+<div class="Examples__item-description">
+  <h3>wrap-reverse</h3>
+  <p>Establece los ítems en modo multilínea, pero en dirección inversa.</p>
+</div>
+<div class="js_item Examples__item-content is-active">
+  <div class="Examples__item-hover">
+    <div class="cgrid-row cgrid-w_wrap-reverse">
+      <div class="col-6-lg col-6-md">
+        <span class="box-content">
+          1
+        </span>
+      </div>
+      <div class="col-6-lg col-6-md">
+        <span class="box-content">
+          2
+        </span>
+      </div>
+      <div class="line-break spacing"></div>
+      <div class="col-6-lg col-6-md">
+        <span class="box-content">
+          3
+        </span>
+      </div>
+      <div class="col-6-lg col-6-md">
+        <span class="box-content">
+          4
+        </span>
+      </div>
+    </div>
+  </div>
+<pre>
+<code>
+<span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"cgrid-row cgrid-w_wrap-reverse"</span><span class="tag">></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+  <span class="tag">&lt;div</span> <span class="class">class</span>=<span class="class-value">"col-6-lg col-6-md"</span><span class="tag">></span>...<span class="tag">&lt;/div></span>
+<span class="tag">&lt;/div></span>
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+        </div>
+<div class="js_tab__content org-section_Examples d_none">
+  <div class="Examples__row">
+    <span class="js_row-toggle Examples__row-toggle-btn is-active">
+    </span>
+    <div class="Examples__description">
+      <h2>Mixings</h2>
+      <p>Los mixings nos ayudaran a definir grillas personalizadas. Estos son perfectos para los diseños
+        personalizados. Con los mixings podremos definir atributos en elementos especificos del DOM.
+      </p>
+    </div>
+  <div class="js_row Examples__content is-active">
+      <div class="Examples__item">
+      <span class="js_item-toggle Examples__item-toggle-btn is-active">
+      </span>
+      <div class="Examples__item-description">
+        <h3>Container</h3>
+        <p>Define ancho del contenedor</p>
+      </div>
+<div class="js_item Examples__item-content is-active">
+  <pre>
+  <code>
+  <span class="tag">@include </span><span class="class">container</span>(<span class="tag">$width</span>: <span class="class-value">$global-layout</span>)  </code>
+  </pre>
+        <table class="org_Table-doc">
+          <thead>
+            <tr>
+              <th>Arguments</th>
+              <th>Value</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$width</td>
+              <td>input</td>
+              <td>Define el ancho del contenedor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="Examples__item">
+      <span class="js_item-toggle Examples__item-toggle-btn is-active">
+      </span>
+      <div class="Examples__item-description">
+        <h3>Make row</h3>
+        <p>Agrega atributos</p>
+  <pre>
+  <code>
+  <span class="tag">@include </span><span class="class">make-row</span>(<span class="tag">$fluid</span>: <span class="class-value">false</span>, <span class="tag">$flex-direction</span>: <span class="class-value">row</span>, <span class="tag">$flex-wrap</span>:<span class="class-value">wrap</span>)  </code>
+  </pre>
+        <table class="org_Table-doc">
+          <thead>
+            <tr>
+              <th>Arguments</th>
+              <th>Value</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$fluid</td>
+              <td>false | true</td>
+              <td>Agrega o quita margen negativo</td>
+            </tr>
+            <tr>
+                <td>$flex-direction</td>
+                <td>row | row-reverse | column | column-reverse</td>
+                <td>Define tipo de direccion de eje principal</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="js_item Examples__item-content is-active">
+        <div class="Examples__item-hover">
+          <section class="custom-wrap">
+            <div class="custom-body">
+              <div class="box-content">
+                Body
+              </div>
+            </div>
+            <aside class="custom-aside">
+              <div class="box-content">
+                Aside
+              </div>
+            </aside>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="Examples__item">
+      <span class="js_item-toggle Examples__item-toggle-btn is-active">
+      </span>
+      <div class="Examples__item-description">
+        <h3>Make Col</h3>
+        <p>Define ancho de columna por defecto</p>
+  <pre>
+  <code>
+  <span class="tag">@include </span><span class="class">make-col</span>(<span class="tag">$flex-grow</span>: <span class="class-value">1</span>, <span class="tag">$fluid</span>: <span class="class-value">false</span>)  </code>
+  </pre>
+        <table class="org_Table-doc">
+          <thead>
+            <tr>
+              <th>Arguments</th>
+              <th>Value</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$flex-grow</td>
+              <td>0, 1.. column-total</td>
+              <td>Número que indica el crecimiento del ítem respecto al resto.</td>
+            </tr>
+            <tr>
+                <td>$fluid</td>
+                <td>false | true</td>
+                <td>Agrega o quita padding</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="js_item Examples__item-content is-active">
+        <div class="Examples__item-hover">
+          <section class="custom-wrap custom-col">
+            <div class="custom-body">
+              <div class="box-content">
+                Body
+              </div>
+            </div>
+            <aside class="custom-aside">
+              <div class="box-content">
+                Aside
+              </div>
+            </aside>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="Examples__item">
+    <span class="js_item-toggle Examples__item-toggle-btn is-active">
+    </span>
+    <div class="Examples__item-description">
+      <h3>Make Custom Col</h3>
+      <p>Define ancho de columna</p>
+<pre>
+<code>
+<span class="tag">@include </span><span class="class">make-custom-col</span>(<span class="tag">$percent</span>, <span class="tag">$viewport</span>: <span class="class-value">false</span>, <span class="tag">$strict</span>: <span class="class-value">false</span>)  </code>
+</pre>
+      <table class="org_Table-doc">
+        <thead>
+          <tr>
+            <th>Arguments</th>
+            <th>Value</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$percent</td>
+            <td>0, 1.. column-total</td>
+            <td>Define el porcentaje de la columna</td>
+          </tr>
+          <tr>
+              <td>$viewport</td>
+              <td>false | wide | desktop | tablet | mobile</td>
+              <td>Define donde se va aplicar el porcentaje, por defecto es false y se aplica sin viewport.</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="js_item Examples__item-content is-active">
+      <div class="Examples__item-hover">
+        <section class="custom-wrap custom-col">
+          <div class="custom-body">
+            <div class="box-content">
+              Body
+            </div>
+          </div>
+          <aside class="custom-aside">
+            <div class="box-content">
+              Aside
+            </div>
+          </aside>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div class="Examples__item">
+      <span class="js_item-toggle Examples__item-toggle-btn is-active">
+      </span>
+      <div class="Examples__item-description">
+        <h3>Make Custom Offset</h3>
+        <p>Define ancho de offset</p>
+  <pre>
+  <code>
+  <span class="tag">@include </span><span class="class">make-custom-offset</span>(<span class="tag">$percent</span>, <span class="tag">$viewport</span>: <span class="class-value">false</span>, <span class="tag">$strict</span>: <span class="class-value">false</span>)  </code>
+  </pre>
+        <table class="org_Table-doc">
+          <thead>
+            <tr>
+              <th>Arguments</th>
+              <th>Value</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$percent</td>
+              <td>0, 1.. column-total</td>
+              <td>Define el porcentaje del offset</td>
+            </tr>
+            <tr>
+              <td>$viewport</td>
+              <td>false | wide | desktop | tablet | mobile</td>
+              <td>Define donde se va aplicar el porcentaje, por defecto es false y se aplica sin viewport.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="js_item Examples__item-content is-active">
+        <div class="Examples__item-hover">
+          <section class="custom-wrap custom-col">
+            <div class="custom-body">
+              <div class="box-content">
+                Body
+              </div>
+            </div>
+            <aside class="custom-aside">
+              <div class="box-content">
+                Aside
+              </div>
+            </aside>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script>
+		$(function() {
+			var domElm = {
+				row: $('.js_row'),
+				rowBtn: $('.js_row-toggle'),
+				item: $('.js_item'),
+        itemBtn: $('.js_item-toggle'),
+        listTab: $('.js_tab__menu'),
+        tabContent: $('.js_tab__content')
+      };
+
+			domElm.rowBtn.on('click', function(){
+				$(this).toggleClass('is-active');
+				$(this).closest('.Examples__row').find(domElm.row).slideToggle()
+			});
+
+			domElm.itemBtn.on('click', function(){
+				$(this).toggleClass('is-active');
+				$(this).closest('.Examples__item').find(domElm.item).slideToggle()
+      });
+
+      domElm.listTab.find('li').on('click', function() {
+        var self = $(this);
+        domElm.listTab.find('li').removeClass('is-active')
+        self.addClass('is-active')
+
+        domElm.tabContent.addClass('d_none')
+        domElm.tabContent.eq(self.index()).removeClass('d_none')
+      });
+
+
+
+		});
+	</script>
+</body>
+
+</html>

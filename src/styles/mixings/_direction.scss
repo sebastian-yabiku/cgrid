@@ -1,0 +1,41 @@
+/**
+ * @description: define class in responsive
+ * @mixing: call-direction
+ */
+ @mixin call-direction($type: false) {
+	@if($type == false) {
+	 @each $val in row, row-reverse, column, column-reverse {
+		 @include class-direction(#{$direction-class}_#{$val}, $val);
+	 }
+	} @else {
+	 @each $val in row, row-reverse, column, column-reverse {
+		 @include class-direction(#{$direction-class}_#{$val}-#{$type}, $val);
+	 }
+	}
+}
+
+/**
+ * @description: add default attr
+ * @mixing: attr-direction
+ */
+@mixin attr-direction {
+	@include call-direction();
+}
+
+/**
+ * @description: Definition of class
+ * @mixing: class-direction
+ */
+@mixin class-direction($class, $type) {
+ .#{$class} {
+	 @include make-direction($type)
+ }
+}
+
+/**
+ * @description: Define type.
+ * @mixing: make-direction
+ */
+@mixin make-direction($type) {
+ flex-direction: $type;
+}

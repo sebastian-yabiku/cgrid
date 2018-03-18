@@ -1,0 +1,43 @@
+/**
+ * @description: LLamado a mixings.
+ */
+
+/* attributes definition
+---------------------------------------------------------------*/
+@include attr-row;
+@include attr-col;
+@include attr-helpers;
+@include attr-justify-content;
+@include attr-align-content;
+@include attr-align-items;
+@include attr-align-self;
+@include attr-direction;
+@include attr-wrap;
+
+/* >=1200
+---------------------------------------------------------------*/
+@include wide {
+  @include make-cgrid(lg);
+}
+
+/* <=1199
+---------------------------------------------------------------*/
+@include desktop {
+  @include make-cgrid(md);
+}
+
+/* <=799
+---------------------------------------------------------------*/
+@include tablet {
+  @include make-cgrid(sm);
+}
+
+/* <=425
+---------------------------------------------------------------*/
+@include mobile {
+  @include make-cgrid(xs);
+}
+
+
+
+

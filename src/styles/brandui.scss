@@ -1,0 +1,700 @@
+/**
+ * @description: Styles for the branding CGRID.
+ */
+@import "cgrid-main";
+/*---------------------------------------------------------------
+/* RESET
+---------------------------------------------------------------*/
+/* http://meyerweb.com/eric/tools/css/reset/
+	 v2.0 | 20110126
+	 License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block; }
+
+body {
+	line-height: 1; }
+
+ol, ul {
+	list-style: none; }
+
+// blockquote, q {
+// 	quotes: none; }
+
+// blockquote {
+// 	&:before, &:after {
+// 		content: '';
+// 		content: none; } }
+
+q {
+	&:before, &:after {
+		content: '';
+		content: none; } }
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0; }
+
+/*---------------------------------------------------------------
+/* SETTING
+---------------------------------------------------------------*/
+
+/* url
+---------------------------------------------------------------*/
+$url-dist : '..';
+$url-public-fonts : '../fonts';
+
+/* font
+---------------------------------------------------------------*/
+$font-primary: 'Encode Sans Condensed', sans-serif;
+$font-secondary: 'Francois One', sans-serif;
+$font-complementary: 'arial';
+
+$font-base-size : 62.5%; /* 10px*/
+$font-body-size : 1.3; 		/* 13px*/
+$font-global : $font-primary;
+$font-heading : $font-secondary;
+$font-text : $font-complementary;
+
+/* color
+---------------------------------------------------------------*/
+$color-branding: (
+  primary: #00964d,
+  secondary: #1e429a,
+  complementary : #00afa9
+);
+
+$color-semantic: (
+  error: red,
+  warning: yellow,
+  success: green,
+  information: blue
+);
+
+$color-neutral: (
+  white: white,
+  black: black,
+  gray: gray
+);
+
+$color-branding-primary: map-get($color-branding, primary);
+$color-branding-secondary: map-get($color-branding, secondary);
+$color-branding-complementary: map-get($color-branding, complementary);
+$color-semantic-error: map-get($color-semantic, error);
+$color-semantic-warning: map-get($color-semantic, warning);
+$color-semantic-success: map-get($color-semantic, success);
+$color-semantic-information: map-get($color-semantic, information);
+$color-neutral-white: map-get($color-neutral, white);
+$color-neutral-black: map-get($color-neutral, black);
+$color-neutral-gray: map-get($color-neutral, gray);
+
+$color-text :$color-neutral-black;
+$color-link : $color-neutral-gray;
+
+/* box
+---------------------------------------------------------------*/
+$box-padding: 20px;
+$box-margin: 20px;
+
+/* border
+---------------------------------------------------------------*/
+$border-color: #ddd;
+
+/* layout
+---------------------------------------------------------------*/
+$layout-width:800;
+
+
+/* $mq
+---------------------------------------------------------------*/
+$mq-desktop : 1024px;
+$mq-tablet : 800px;
+$mq-mobile : 601px;
+$mq-mobile-sm : 400px;
+
+/*---------------------------------------------------------------
+/* MIXING
+---------------------------------------------------------------*/
+
+/**
+ * @description: Definicion shorthand font con rem.
+ * @mixing: font
+ * @param {font-style}   string.
+ * @param {font-variant} string.
+ * @param {font-weight}  string.
+ * @param {font-weight}  string.
+ * @param {font-size}    number.
+ * @param {line-height}  number.
+ * @param {font-family}  string.
+ */
+ @mixin font($font-style:normal, $font-variant:normal, $font-weight:normal, $font-size:1.6, $line-height:1.1, $font-family:'arial'){
+	font:$font-style $font-variant $font-weight $font-size + rem /$line-height + rem $font-family;
+}
+
+/**
+ * @description: Tamaño de fuente.
+ * @mixing: font-size
+ * @param {size-value} number
+ */
+@mixin font-size($size-value: 1.6) {
+  font-size: ($size-value * 10) + px;
+  font-size: $size-value + rem;
+}
+
+/**
+ * @description: Tamaño de fuente.
+ * @mixing: line-height
+ * @param {line-height} number
+ */
+@mixin line-height($line-height: 1.1) {
+  line-height: ($line-height * 10) + px;
+  line-height: $line-height + rem;
+}
+
+/**
+ * @description: Overflow text.
+ * @mixing: text-overflow
+ */
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*---------------------------------------------------------------
+/* GLOBAL
+---------------------------------------------------------------*/
+html,
+body {
+	margin: 0;
+	min-height:100%;
+}
+
+html {
+	-ms-text-size-adjust: 100%;
+	font-size: $font-base-size;
+  -webkit-text-size-adjust: 100%;
+
+  @media (max-width: $mq-tablet){
+  	font-size: 58%;
+  }
+}
+
+body {
+	color: $color-text;
+	font-family: $font-global;
+	background: #fff;
+	transition: all 0.5s ease;
+	background: #22c1c3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #22c1c3, #fdbb2d); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to top, #22c1c3, #fdbb2d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	@include font-size($font-body-size);
+}
+
+a {
+	color: $color-link;
+	text-decoration: none;
+}
+
+a
+,input
+,button {
+
+	&:focus{
+		 outline: none;
+	}
+}
+
+button:focus,
+div:focus,
+figure:focus,
+input:focus {
+	outline:0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-heading;
+}
+
+p {
+	color:#3c3c3c;
+	font-family: $font-text;
+}
+
+pre{
+	padding: 0 ($box-padding - 5) 10px;
+	margin: $box-margin 0 0;
+	overflow: hidden;
+	overflow-x: auto;
+	font-family: monospace;
+	background: #000;
+	color: #fff;
+
+	code {
+		@include line-height(2.2);
+	}
+}
+
+.tag {
+	color: #f7bb30;
+}
+
+.class,
+.minor,
+.major {
+	color: #22c1c3;
+}
+
+.minor,
+.major,
+.and {
+	font-weight: bold;
+}
+
+.class-value,
+.and {
+	color: #ff7ba5;
+}
+
+
+/*---------------------------------------------------------------
+/* ATOMS
+---------------------------------------------------------------*/
+.atm_Branding-logo {
+	position: relative;
+	font-family: 'Righteous', cursive;
+	color: #fff;
+	font-weight: bold;
+	@include font-size(7.2);
+	@include line-height(6);
+
+	.Branding-logo__letter {
+		position: relative;
+		top: -7px;
+		padding: 3px 12px 5px;
+		margin: 0 5px 0 0px;
+		display: inline-block;
+		vertical-align: top;
+		border: 3px solid rgba(255, 255, 255, 1);
+		border-radius: 10px;
+		overflow:hidden;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff7ba5+0,fdbb2d+40,fdbb2d+50,fdbb2d+60,22c1c3+100 */
+    background: #ff7ba5; /* Old browsers */
+    background: -moz-linear-gradient(90deg, #ff7ba5 30%, #fdbb2d 0%, #fdbb2d 70%, #fdbb2d 0%, #22c1c3 30%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(90deg, #ff7ba5 30%,#fdbb2d 0%,#fdbb2d 70%,#fdbb2d 0%,#22c1c3 30%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(90deg, #ff7ba5 30%,#fdbb2d 0%,#fdbb2d 70%,#fdbb2d 0%,#22c1c3 30%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7ba5', endColorstr='#22c1c3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+		.Branding-logo__c {
+			position: relative;
+			z-index:2;
+		}
+	}
+
+	.Branding-logo__flex {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+    width: 100%;
+    border-radius: 10px;
+		@include make-row($fluid:true, $flex-direction:nowrap);
+		@include make-justify-content(center);
+	}
+
+	.Branding-logo__cold {
+		padding:0 5px;
+		margin: 0 10px 0 0;
+		background: rgba(255, 255, 255, 0.18);
+		@include make-custom-col($widthColumn:1);
+		&:last-child {
+			margin: 0;
+		}
+	}
+}
+
+/*---------------------------------------------------------------
+/* MOLECULES
+---------------------------------------------------------------*/
+/* nav
+---------------------------------------------------------------*/
+.mol-nav_Main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 9;
+  background: rgba(255, 255, 255, 0.2);
+}
+/*---------------------------------------------------------------
+/* ORGANISM
+---------------------------------------------------------------*/
+.org-section_Presentation {
+	margin: 0 0 $box-margin * 2;
+	padding: 0 0 10px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+
+	.Presentation__description {
+
+		@include font-size(1.8);
+
+		p {
+      margin: 0 0 $box-margin / 2;
+      font-family: $font-primary;
+      font-weight: bold;
+			@include line-height(2.6);
+		}
+
+		ul {
+			margin: 20px 0 30px;
+		}
+
+		li {
+			margin: 0 0 10px;
+			font-weight: bold;
+			@include font-size(1.4);
+		}
+  }
+
+  .Presentation__list {
+    text-align: center;
+
+    li {
+      display: inline-block;
+      width: 20%;
+      min-width: 120px;
+      margin: 0 2%;
+    }
+  }
+
+  .Presentation__bubble {
+    display: block;
+    height: 200px;
+    margin: 0 0 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 6px;
+  }
+}
+
+.org-section_Examples {
+	h2{
+		display: inline-block;
+		// padding-bottom: 5px;
+		// border-bottom:3px solid transparent;
+		margin: 0 0 $box-margin - 15;
+		font-weight: bold;
+		text-transform: uppercase;
+		@include font-size(2.6);
+	}
+
+	h3 {
+		display: inline-block;
+		padding: 0 0 5px;
+		border-bottom: 3px dotted transparent;
+		text-transform: capitalize;
+		color: #0c147b;
+		@include font-size(1.8);
+	}
+
+	p {
+		margin: 0 0 $box-margin - 5;
+		@include line-height(2.4);
+		@include font-size(1.4);
+
+		&:last-child {
+			margin: 0;
+		}
+
+		small {
+			font-size: .9em;
+		}
+	}
+
+	.box-content {
+		display: block;
+		min-height: 30px;
+		height: 100%;
+		width: 100%;
+		border: 1px solid #fff;
+		background: rgba(255, 255, 255, 0.20);
+		transition: background 1s ease;
+		font-weight: bold;
+		color: #fff;
+		padding: 10px;
+		text-align: center;
+		@include box-sizing(border-box);
+		@include font-size(2);
+		@include line-height(3.2);
+
+		&.box-content--height {
+			height: 15rem;
+		}
+	}
+
+	.box-height {
+		height: 15rem;
+	}
+
+	.Examples__row {
+		position: relative;
+		margin-bottom: $box-margin * 2;
+		padding: $box-padding;
+		background: rgba(255,255,255,.2);
+		transition: all 1s ease;
+
+		.Examples__row-toggle-btn {
+			position: absolute;
+			right: 20px;
+			top: 18px;
+			display: block;
+			width: 18px;
+			height: 18px;
+			border: 3px solid #fff;
+			cursor: pointer;
+			transition: all .4s ease-in-out;
+
+			&:hover {
+				background: rgba(255,255,255,.2);
+			}
+
+			&.is-active {
+				top: 28px;
+				height: 0;
+			}
+		}
+
+		&:hover {
+			border-radius: 10px;
+
+			h2 {
+				// border-color: #000;
+			}
+		}
+
+	}
+
+	.Examples__item {
+		position: relative;
+		transition: all 1s ease;
+
+		&:last-child {
+			margin: 0;
+		}
+
+		&:hover {
+			border-radius: 10px;
+
+			h3 {
+				display: inline-block;
+				border-bottom: 3px dotted #0c147b;
+			}
+
+			.box-content {
+				background:white;
+				color: #000;
+			}
+
+			.Examples__item-hover {
+				background: rgba(255, 255, 255, 0.2);
+			}
+
+			.org_Table {
+				tbody {
+					td {
+						background: #fff;
+
+						&:first-child {
+							background: #efefef;
+						}
+					}
+				}
+			}
+		}
+
+		.Examples__item-toggle-btn {
+			position: absolute;
+			top: -4px;
+			right: 0;
+			width: 12px;
+			height: 12px;
+			background: #ff7ba5;
+			cursor: pointer;
+			border-radius: 100%;
+			transition: all .4s ease-out;
+
+			&.is-active {
+				background: #22c1c3;
+			}
+		}
+	}
+
+	.Examples__description {
+
+		p {
+			@include font-size(1.6);
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+
+	.Examples__content {
+		display: none;
+		margin: $box-margin - 5 0 0;
+
+		&.is-active {
+			display: block;
+		}
+	}
+
+	.Examples__item-description {
+		margin: 0 0 $box-margin - 5;
+	}
+
+	.Examples__item-content {
+		display: none;
+		margin: 0 0 40px;
+
+		&.is-active {
+			display: block;
+		}
+	}
+}
+
+.org_Table {
+	width: 100%;
+
+	th {
+		font-weight: bold;
+		background: #efefef;
+	}
+
+	th,
+	td{
+		padding: 20px;
+		border: 1px solid #fff;
+		text-align: center;
+		@include font-size(1.6);
+		transition: background 1s ease;
+	}
+
+	td {
+		background: rgba(255, 255, 255, 0.2);
+
+		&:first-child {
+			font-weight: bold;
+			background: #efefef;
+			@include font-size(1.6);
+		}
+	}
+}
+
+.org_Tab {
+  display: flex;
+  margin: 0 0 20px;
+  border:1px solid #fff;
+
+  li {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+
+    &.is-active {
+      background: #fff;
+      cursor: default;
+    }
+  }
+}
+
+.org_Table-doc {
+  th,
+  td {
+    border: 1px solid #000;
+    padding: 10px;
+  }
+
+  th{
+    font-weight: bold;
+    @include font-size(1.4);
+  }
+}
+
+/*---------------------------------------------------------------
+/* TEMPLATE
+---------------------------------------------------------------*/
+/* wrap
+---------------------------------------------------------------*/
+.tem_Wrap {
+	padding: $box-padding 0;
+}
+/* header
+---------------------------------------------------------------*/
+.tem_Header {
+  margin-top:80px;
+  text-align: center;
+
+	.Header__logo {
+		margin-bottom: $box-margin / 2;
+  }
+
+	.Header__subtitle {
+		display: block;
+    font-weight: bold;
+    color: #0c147b;
+		@include font-size(1.5)
+	}
+}
+
+/* body
+---------------------------------------------------------------*/
+.tem_Body {
+	padding: $box-padding;
+}
+
+/* global
+---------------------------------------------------------------*/
+.container {
+	@include container(1080);
+}
+
+
+/*---------------------------------------------------------------
+/* CUSTOM
+---------------------------------------------------------------*/
+.custom-wrap {
+  @include make-row($fluid: false, $flex-direction: row, $flex-wrap:wrap)
+}
+
+.custom-body,
+.custom-aside {
+  @include make-col($fluid: false)
+}
+
+.custom-col {
+  .custom-body {
+    @include make-custom-col($widthColumn: 2);
+    @include make-custom-col($widthColumn: 10, $viewport: tablet, $strict: true);
+  }
+}

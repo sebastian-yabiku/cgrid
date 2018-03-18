@@ -1,0 +1,41 @@
+/**
+ * @description: define class in responsive
+ * @mixing: call-wrap
+ */
+ @mixin call-wrap($type: false) {
+	@if ($type == false) {
+		@each $val in nowrap, wrap, wrap-reverse {
+			@include class-wrap(#{$wrap-class}_#{$val}, $val);
+		}
+	} @else {
+		@each $val in nowrap, wrap, wrap-reverse {
+			@include class-wrap(#{$wrap-class}_#{$val}-#{$type}, $val);
+		}
+	}
+}
+
+/**
+ * @description: add default attr
+ * @mixing: attr-wrap
+ */
+@mixin attr-wrap {
+  @include call-wrap();
+}
+
+/**
+ * @description: Definition of class
+ * @mixing: class-wrap
+ */
+@mixin class-wrap($class, $type) {
+ .#{$class} {
+	 @include make-wrap($type)
+ }
+}
+
+/**
+ * @description: Define type.
+ * @mixing: make-wrap
+ */
+@mixin make-wrap($type) {
+ flex-wrap: $type;
+}

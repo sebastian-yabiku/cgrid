@@ -1,0 +1,51 @@
+/**
+ * @description: define class in responsive
+ * @mixing: call-align-self
+ */
+ @mixin call-align-self($break-point: false) {
+	@if($break-point == false) {
+	 @each $val in start, center, end, stretch, baseline, auto, order {
+		 @include class-align-self(#{$align-self-class}_#{$val}, $val);
+	 }
+	} @else {
+	 @each $val in start, center, end, stretch, baseline, auto, order {
+		 @include class-align-self(#{$align-self-class}_#{$val}-#{$break-point}, $val);
+	 }
+	}
+}
+
+/**
+ * @description: add default attr
+ * @mixing: attr-align-self
+ */
+@mixin attr-align-self {
+	@include call-align-self();
+}
+
+/**
+ * @description: Definition of class
+ * @mixing: class-align-self
+ */
+@mixin class-align-self($class, $attr) {
+  @if ($attr == 'order') {
+
+  } @else {
+    .#{$class} {
+      @include make-align-self($attr)
+    }
+  }
+}
+
+/**
+ * @description: Define type.
+ * @mixing: make-align-self
+ */
+@mixin make-align-self($attr) {
+	@if ($attr == 'start') {
+    align-self: flex-#{$attr};
+  } @else if ($attr == 'end') {
+    align-self: flex-#{$attr};
+  } @else {
+    align-self: $attr;
+  }
+}

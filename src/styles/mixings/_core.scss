@@ -1,0 +1,319 @@
+/**
+ * @description: Box Sizing.
+ * @mixing: box-sizing
+ * @param {String} box sizing value
+ */
+ @mixin box-sizing($boxmodel) {
+	box-sizing: $boxmodel;
+}
+
+/**
+ * @description: attr helpers.
+ * @mixing: attr-helpers
+ */
+ @mixin attr-helpers() {
+		.line-break {
+			width: 100%!important;
+			height: 0;
+    }
+    .spacing {
+      margin-top:#{$spacing}#{$global-unit}
+    }
+ }
+
+/**
+ * @description: size screen.
+ * @mixing: wide
+ */
+@mixin wide($strict: false) {
+  @media (min-width: $viewport-wide#{$global-unit}) {
+    @content;
+  }
+}
+
+/**
+ * @description: size screen.
+ * @mixing: desktop
+ */
+@mixin desktop($strict: false) {
+  @if ($strict == true) {
+    @media (min-width: $viewport-tablet#{$global-unit}) and (max-width: $viewport-desktop#{$global-unit}) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $viewport-desktop#{$global-unit}) {
+      @content;
+    }
+  }
+}
+
+/**
+ * @description: size screen.
+ * @mixing: tablet
+ */
+@mixin tablet($strict: false) {
+  @if ($strict == true) {
+    @media (min-width:$viewport-mobile#{$global-unit}) and (max-width: $viewport-tablet#{$global-unit}) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $viewport-tablet#{$global-unit}) {
+      @content;
+    }
+  }
+}
+
+/**
+ * @description: size screen.
+ * @mixing: mobile
+ */
+@mixin mobile($strict: false) {
+  @media (max-width: $viewport-mobile#{$global-unit}) {
+    @content;
+  }
+}
+
+/**
+ * @description: Clean box model.
+ * @mixing: clear-both
+ */
+@mixin clear-both() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+/**
+ * @description: definition of width.
+ * @mixing: container
+ * @param {number} layout width
+ */
+ @mixin container($width: $global-layout) {
+	width: 100%;
+	max-width: $width#{$global-unit};
+	margin: auto;
+}
+
+/**
+ * @description: definition of spacing row.
+ * @mixing: spacing-row
+ * @param {number} spacing with
+ */
+ @mixin spacing-row($spacing: $spacing) {
+	margin-left:ceil(-($spacing) / 2)#{$global-unit};
+	margin-right:floor(-($spacing) / 2)#{$global-unit};
+ }
+
+ /**
+ * @description: definition of spacing celd.
+ * @mixing: spacing-celd
+ * @param {number} spacing with
+ */
+ @mixin spacing-celd($spacing: $spacing) {
+	padding-left:  ceil(($spacing) / 2)#{$global-unit};
+	padding-right: floor(($spacing) / 2)#{$global-unit};
+	@include box-sizing(border-box);
+ }
+
+/**
+ * @description: add Attributes for rows.
+ * @mixing: attr-row
+ */
+@mixin attr-row {
+	.#{$row-class} {
+		@include make-row();
+	}
+}
+
+/**
+ * @description: Make rows.
+ * @mixing: make-row
+ */
+@mixin make-row($fluid: false, $flex-direction: row, $flex-wrap: wrap) {
+	display: flex;
+  flex-flow: $flex-direction $flex-wrap;
+	@if($fluid == false) {
+		@include spacing-row();
+	}
+}
+
+/**
+ * @description: add Attributes for cols.
+ * @mixing: attr-col
+ */
+ @mixin attr-col {
+	.#{$column-class} {
+    @include make-col();
+  }
+
+  [class*=#{$column-prefix}] {
+    @include spacing-celd();
+  }
+}
+
+/**
+ * @description: Make col.
+ * @mixing: make-col
+ */
+@mixin make-col($flex-grow: 1, $fluid: false) {
+	flex-grow: $flex-grow;
+	@if($fluid == false) {
+		@include spacing-celd();
+	}
+}
+
+/**
+ * @description: Attributes for columns.
+ * @mixing: attr-colums
+ */
+ @mixin attr-colums($class, $i: 1, $list: ".#{$column-prefix}#{$i}-#{$class}") {
+  @for $i from (1 + 1) through $column-total {
+    $list: "#{$list}, .#{$column-prefix}#{$i}-#{$class}";
+	}
+  #{$list} {
+		@include spacing-celd();
+  }
+}
+
+/**
+ * @description: Make grids.
+ * @mixing: make-grid
+ */
+@mixin make-cgrid($class) {
+	@include loop-cgrid-columns($column-total, $class, width);
+	@include loop-cgrid-columns($column-total, $class, offset);
+
+  @include call-justify-content($class);
+  @include call-align-content($class);
+  @include call-align-items($class);
+  @include call-align-self($class);
+  @include call-direction($class);
+  @include call-wrap($class);
+}
+
+/**
+ * @description: Loop for Add attributes one to one.
+ * @mixing: loop-grid-columns
+ * @param {totalColumns} num, columns total
+ * @param {class} string, class name
+ * @param {type} string, attribute type
+ */
+@mixin loop-cgrid-columns($totalColumns, $class, $type) {
+	@for $i from 0 through $totalColumns {
+		@include calc-cgrid-columns($i, $class, $type);
+	}
+}
+
+/**
+ * @description: Calc attr according type.
+ * @mixing: calc-cgrid-columns
+ * @param {index} num, indice
+ * @param {class} string, class name
+ * @param {type} string, attribute type
+ */
+@mixin calc-cgrid-columns($index, $class, $type) {
+	@if ($type == width) and ($index > 0) {
+		.#{$column-prefix}#{$index}-#{$class} {
+			flex-basis: percentage(($index / $column-total));
+			max-width: percentage(($index / $column-total));
+		}
+	}
+
+	@if ($type == offset) {
+		.#{$column-prefix}#{$index}-#{$type}-#{$class} {
+			margin-left: percentage(($index / $column-total));
+		}
+	}
+}
+
+/**
+ * @description: Make col custom
+ * @mixing: make-custom-col
+ * @param {widtColumn} num
+ * @param {viewport} boolean
+ * @param {strict} boolean
+ */
+@mixin make-custom-col($widthColumn, $viewport: false, $strict: false) {
+  @if ($viewport == false) {
+    flex-basis: percentage(($widthColumn / $column-total));
+    max-width: percentage(($widthColumn / $column-total));
+  }
+  @if ($viewport == wide) {
+    @include wide {
+      flex-basis: percentage(($widthColumn / $column-total));
+      max-width: percentage(($widthColumn / $column-total));
+    }
+  }
+  @if ($viewport == desktop) {
+    @include desktop($strict: $strict) {
+      flex-basis: percentage(($widthColumn / $column-total));
+      max-width: percentage(($widthColumn / $column-total));
+    }
+  }
+  @if ($viewport == tablet) {
+    @include tablet($strict: $strict) {
+      flex-basis: percentage(($widthColumn / $column-total));
+      max-width: percentage(($widthColumn / $column-total));
+    }
+  }
+  @if ($viewport == mobile) {
+    @include mobile {
+      flex-basis: percentage(($widthColumn / $column-total));
+      max-width: percentage(($widthColumn / $column-total));
+    }
+  }
+}
+
+/**
+ * @description: Make offset custom
+ * @mixing: make-custom-offset
+ * @param {widtColumn} num
+ * @param {viewport} boolean
+ * @param {strict} boolean
+ */
+@mixin make-custom-offset($widthColumn, $viewport: false, $strict: false) {
+  @if ($viewport == false) {
+    margin-left: percentage(($widthColumn / $column-total));
+  }
+  @if ($viewport == wide) {
+    @include wide {
+      margin-left: percentage(($widthColumn / $column-total));
+    }
+  }
+  @if ($viewport == desktop) {
+    @include desktop($strict: $strict) {
+      margin-left: percentage(($widthColumn / $column-total));
+    }
+  }
+  @if ($viewport == tablet) {
+    @include tablet($strict: $strict) {
+      margin-left: percentage(($widthColumn / $column-total));
+    }
+  }
+  @if ($viewport == mobile) {
+    @include mobile {
+      margin-left: percentage(($widthColumn / $column-total));
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

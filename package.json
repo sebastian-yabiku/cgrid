@@ -1,0 +1,27 @@
+{
+  "name": "cgrid",
+  "version": "1.0.0",
+  "description": "Make Grids using flexbox",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian-yabiku/cgrid.git"
+  },
+  "keywords": [
+    "flexbox",
+    "cgrid",
+    "responsive",
+    "ui"
+  ],
+  "author": "sebastian yabiku",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sebastian-yabiku/cgrid/issues"
+  },
+  "homepage": "https://github.com/sebastian-yabiku/cgrid#readme"
+}
